@@ -115,12 +115,25 @@ h2{display:inline-block;color:var(--accent-text);border:1.5px solid var(--accent
 .cta-secondary{border:1.5px solid #1F2328;color:#1F2328;background:transparent}
 .cta-secondary:hover{background:rgba(31,35,40,.08)}
 .cta:focus-visible{outline:3px solid #1F2328;outline-offset:3px}
-.cta-row{display:grid;grid-template-columns:1fr;gap:.5rem;margin-top:.35rem}
-.cta-detail{display:flex;flex-wrap:wrap;align-items:center;gap:.2rem .6rem;margin-top:.5rem;font-size:.8125rem;overflow-wrap:anywhere}
+.cta-detail{display:flex;flex-wrap:wrap;align-items:center;gap:0 .6rem;margin-top:.35rem;font-size:.8125rem;overflow-wrap:anywhere}
 .copy{font:inherit;font-weight:700;color:#1F2328;background:none;border:0;padding:.35rem 0;min-height:24px;
   text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 .copy:focus-visible{outline:3px solid #1F2328;outline-offset:2px;border-radius:4px}
-.copy-status{font-size:.8125rem;font-weight:700;min-height:1.2em}
+.copy-status{font-size:.8125rem;font-weight:700}
+.copy-status:not(:empty){margin-top:.15rem}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;margin-top:.6rem}
+.tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;min-height:3.6rem;padding:.5rem .25rem;
+  border:1.5px solid #1F2328;border-radius:14px;color:#1F2328;text-decoration:none;font-weight:700;font-size:.8125rem;line-height:1.15;text-align:center}
+.tile svg{width:20px;height:20px;flex:none}
+.tile:hover{background:rgba(31,35,40,.08)}
+.tile:focus-visible{outline:3px solid #1F2328;outline-offset:3px}
+@media (forced-colors:active){.tile{border-color:ButtonText}}
+/* Link ai case study */
+a.ext{color:inherit;text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:3px;border-radius:3px}
+a.ext:hover{text-decoration-color:currentColor}
+.cta .ext-ico{width:16px;height:16px;margin:0}
+.ext-ico{width:.8em;height:.8em;margin-left:.15em;vertical-align:-.05em}
+
 @media (forced-colors:active){.cta{border:1.5px solid ButtonText}}
 @media (prefers-reduced-motion:no-preference){.cta{transition:background-color .15s ease}}
 
@@ -131,8 +144,9 @@ h2{display:inline-block;color:var(--accent-text);border:1.5px solid var(--accent
 @media (max-width:760px){
   .outro{display:block;margin:.5rem 1.25rem 1.5rem;padding:1.5rem 1.25rem;border-radius:16px;
     background:var(--accent-soft);color:#1F2328;text-align:center}
-  .outro h2{display:block;border:0;padding:0;margin:0 0 1rem;color:#1F2328;font-size:1.375rem;font-weight:500;line-height:1.25}
-  .outro .cta{max-width:18rem;margin:0 auto}
+  .outro h2{display:block;border:0;padding:0;margin:0 0 .35rem;color:#1F2328;font-size:1.375rem;font-weight:500;line-height:1.25}
+  .outro-text{margin-bottom:1.1rem}
+  .outro-ctas{display:grid;gap:.6rem;max-width:20rem;margin:0 auto}
 }
 
 @media (max-width:760px){
@@ -160,7 +174,8 @@ h2{display:inline-block;color:var(--accent-text);border:1.5px solid var(--accent
   .photo{width:4.75rem;height:5.7rem}
   .name{font-size:2.1rem}
   .role{font-size:.8125rem}
-  .contact{margin:0 1.25rem;border-radius:16px;padding:1.1rem 1.25rem}
+  .contact{margin:0 1.25rem;border-radius:16px;padding:.9rem 1rem 1rem}
+  .cta-intro{display:none}
   .main{padding:1.75rem 1.25rem .5rem}
   .side{padding:1.6rem 1.25rem 1.75rem}
   .privacy{padding:0 1.25rem 1.75rem}
@@ -180,6 +195,8 @@ h2{display:inline-block;color:var(--accent-text);border:1.5px solid var(--accent
   .mini{display:none!important}
   .outro{display:none!important}
   .contact-web{display:none}
+  .ext-ico{display:none}
+  a.ext{text-decoration:none}
   .contact-print{display:block}
   html,body{background:#fff}
   body{font-size:9.05pt;line-height:1.43;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -242,9 +259,11 @@ h2{display:inline-block;color:var(--accent-text);border:1.5px solid var(--accent
       <a class="cta cta-primary" href="mailto:giacomozziandrea0@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" d="M3 5h18v14H3z"/><path fill="none" stroke="currentColor" stroke-width="2" d="m3 6 9 7 9-7"/></svg><span>Scrivimi un'email</span></a>
       <p class="cta-detail"><span id="email-addr">giacomozziandrea0@gmail.com</span> <button type="button" class="copy" id="copy-email" aria-describedby="email-addr">Copia indirizzo</button></p>
       <p class="copy-status" role="status" aria-live="polite" id="copy-status"></p>
-      <div class="cta-row">
-        <a class="cta cta-secondary" href="https://www.linkedin.com/in/andrea-giacomozzi-a6a79b261/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg><span>Collegati su LinkedIn</span></a>
-        <a class="cta cta-secondary" href="tel:+393927844709"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg><span>Chiamami<span class="sr-only"> al numero 392 7844709</span></span></a>
+      <ul class="tiles" role="list">
+        <li><a class="tile" href="https://andreagiacomozzi.framer.website/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7.5" height="7.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Portfolio<span class="sr-only"> (si apre in una nuova scheda)</span></span></a></li>
+        <li><a class="tile" href="https://www.linkedin.com/in/andrea-giacomozzi-a6a79b261/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg><span>LinkedIn<span class="sr-only">: collegati con me</span><span class="sr-only"> (si apre in una nuova scheda)</span></span></a></li>
+        <li><a class="tile" href="tel:+393927844709"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg><span>Chiamami<span class="sr-only"> al numero 392 7844709</span></span></a></li>
+      </ul>
       </div>
     </div>
     <ul role="list" class="contact-print">
@@ -279,8 +298,8 @@ h2{display:inline-block;color:var(--accent-text);border:1.5px solid var(--accent
         <ul role="list">
           <li>Progetto siti web, web app ed e-commerce, dalle interviste utente all'architettura dell'informazione, fino a prototipi e <span lang="en">design system</span>. Faccio da punto di contatto tra clienti, <abbr title="Project Manager">PM</abbr> e sviluppatori.</li>
           <li>Curo la progettazione e l'evoluzione della <strong>piattaforma loyalty</strong> di Cleep: aggiorno costantemente i flussi e li declino per i diversi clienti che la adottano, tra cui <strong>Coripet</strong> e <strong>BNL</strong>.</li>
-          <li><strong>Coripet</strong>: ho contribuito alla progettazione di flusso, catalogo premi e <span lang="en">design system</span> della web app che premia gli utenti che riciclano.</li>
-          <li><strong>Unipol Starters</strong>: ho contribuito alla progettazione del flusso di partecipazione e del <span lang="en">design system</span> del concorso <span lang="en">instant win</span>.</li>
+          <li><a class="ext" href="https://andreagiacomozzi.framer.website/projects/coripet-ogni-bottiglia-conta" target="_blank" rel="noopener"><strong>Coripet</strong><svg class="ext-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only">, case study nel portfolio<span class="sr-only"> (si apre in una nuova scheda)</span></span></a>: ho contribuito alla progettazione di flusso, catalogo premi e <span lang="en">design system</span> della web app che premia gli utenti che riciclano.</li>
+          <li><a class="ext" href="https://andreagiacomozzi.framer.website/projects/unipol-starters-instant-win" target="_blank" rel="noopener"><strong>Unipol Starters</strong><svg class="ext-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only">, case study nel portfolio<span class="sr-only"> (si apre in una nuova scheda)</span></span></a>: ho contribuito alla progettazione del flusso di partecipazione e del <span lang="en">design system</span> del concorso <span lang="en">instant win</span>.</li>
           <li><strong>UNA Italian Hospitality</strong>: ho collaborato alla strategia <abbr title="Direct Email Marketing">DEM</abbr> per il lancio del programma loyalty Untourist.</li>
         </ul>
       </article>
@@ -354,7 +373,11 @@ h2{display:inline-block;color:var(--accent-text);border:1.5px solid var(--accent
 
   <section class="outro" id="outro" aria-labelledby="h-outro">
     <h2 id="h-outro">Ti ho incuriosito?</h2>
-    <a class="cta cta-primary js-to-contacts" href="#contatti">Parliamone!<span class="sr-only"> Torna ai contatti in cima alla pagina</span></a>
+    <p class="outro-text">I progetti raccontano il resto.</p>
+    <div class="outro-ctas">
+      <a class="cta cta-primary" href="https://andreagiacomozzi.framer.website/" target="_blank" rel="noopener">Scopri i progetti nel portfolio<svg class="ext-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only"> (si apre in una nuova scheda)</span></a>
+      <a class="cta cta-secondary js-to-contacts" href="#contatti">Parliamone!<span class="sr-only"> Torna ai contatti in cima alla pagina</span></a>
+    </div>
   </section>
 
   <footer class="privacy">
