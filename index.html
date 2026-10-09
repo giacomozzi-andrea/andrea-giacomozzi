@@ -241,6 +241,32 @@ a.ext:hover{text-decoration-color:currentColor}
   .privacy{padding:3mm 13mm 7mm;font-size:6.6pt;align-self:end}
   a{text-decoration:none}
 }
+
+/* Versione online: titoli grandi senza pillola e spazi con gerarchia (il PDF non cambia) */
+@media screen{
+  h2{display:block;border:0;border-radius:0;padding:0;color:var(--ink);
+    font-size:1.875rem;font-weight:400;line-height:1.1;letter-spacing:-.015em;margin-bottom:1.25rem;overflow-wrap:anywhere}
+  h2:not(.sr-only):not(#h-outro)::after{content:".";content:"." / "";color:var(--accent)}
+  section + section{margin-top:3rem}
+  .job + .job{margin-top:2rem}
+  .job-title{font-size:1.25rem;line-height:1.25}
+  .job-meta{margin:.15rem 0 .6rem}
+  .job li{margin-top:.5rem}
+  .skill-group + .skill-group{margin-top:1.25rem}
+  .edu + .edu{margin-top:1.25rem}
+  .edu h3{font-size:1.0625rem}
+}
+@media screen and (min-width:761px){
+  h2{font-size:clamp(1.875rem,2.8vw,2.25rem);margin-bottom:1.5rem}
+  section + section{margin-top:4rem}
+  .main{padding-top:1rem;padding-bottom:3.5rem}
+  .side{padding-top:1rem;padding-bottom:3.5rem}
+}
+@media screen and (max-width:760px){
+  .main{padding-top:2.5rem}
+  .side{padding-top:3rem}
+  .outro{margin-top:1.5rem}
+}
 </style>
 </head>
 <body>
